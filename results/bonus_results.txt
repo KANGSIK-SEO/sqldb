@@ -1,0 +1,48 @@
+=== 보너스1-A. 소장품 없는 부서 (서브쿼리 NOT IN) ===
+
+=== 보너스1-B. 소장품 없는 부서 (LEFT JOIN + IS NULL) ===
+
+=== 보너스3-지표1. 부서 x 분류 교차 집계 ===
+┌────────────────────────────────────────┬─────────────────────┬─────┐
+│            department_name             │ classification_name │ cnt │
+├────────────────────────────────────────┼─────────────────────┼─────┤
+│ European Paintings                     │ Paintings           │ 19  │
+│ Egyptian Art                           │ 미분류              │ 18  │
+│ The Libraries                          │ 미분류              │ 4   │
+│ Arms and Armor                         │ Swords              │ 1   │
+│ Asian Art                              │ Sculpture           │ 1   │
+│ Costume Institute                      │ 미분류              │ 1   │
+│ European Sculpture and Decorative Arts │ Woodwork            │ 1   │
+│ European Sculpture and Decorative Arts │ Woodwork-Furniture  │ 1   │
+│ Islamic Art                            │ Codices             │ 1   │
+│ Robert Lehman Collection               │ Drawings            │ 1   │
+│ Robert Lehman Collection               │ Paintings           │ 1   │
+│ The American Wing                      │ 미분류              │ 1   │
+└────────────────────────────────────────┴─────────────────────┴─────┘
+
+=== 보너스3-지표2. 작품 최다 보유 작가 TOP 5 (미상 제외) ===
+┌────────────────────────────────┬───────────────┐
+│          artist_name           │ artwork_count │
+├────────────────────────────────┼───────────────┤
+│ Edouard Manet                  │ 2             │
+│ Paul Cézanne                   │ 2             │
+│ Rembrandt (Rembrandt van Rijn) │ 1             │
+│ Sir Edward Burne-Jones         │ 1             │
+│ Jan Steen                      │ 1             │
+└────────────────────────────────┴───────────────┘
+
+=== 보너스3-지표3. 작가미상 비율 높은 부서 ===
+┌────────────────────────────────────────┬───────┬─────────────────┬───────────────────┐
+│            department_name             │ total │ anonymous_count │ anonymous_percent │
+├────────────────────────────────────────┼───────┼─────────────────┼───────────────────┤
+│ Arms and Armor                         │ 1     │ 1               │ 100.0             │
+│ Asian Art                              │ 1     │ 1               │ 100.0             │
+│ Costume Institute                      │ 1     │ 1               │ 100.0             │
+│ Egyptian Art                           │ 18    │ 18              │ 100.0             │
+│ The American Wing                      │ 1     │ 1               │ 100.0             │
+│ European Sculpture and Decorative Arts │ 2     │ 1               │ 50.0              │
+│ The Libraries                          │ 4     │ 1               │ 25.0              │
+│ European Paintings                     │ 19    │ 0               │ 0.0               │
+│ Islamic Art                            │ 1     │ 0               │ 0.0               │
+│ Robert Lehman Collection               │ 2     │ 0               │ 0.0               │
+└────────────────────────────────────────┴───────┴─────────────────┴───────────────────┘

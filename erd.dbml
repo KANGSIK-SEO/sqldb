@@ -1,0 +1,41 @@
+// ERD (선택 제출물)
+// https://dbdiagram.io 에 이 내용을 붙여넣으면 다이어그램 이미지로 렌더링됩니다.
+
+Table department {
+  id    integer [pk, increment]
+  name  text    [not null, unique]
+}
+
+Table artist {
+  id           integer [pk, increment]
+  name         text    [not null]
+  nationality  text
+  begin_year   text
+  end_year     text
+}
+
+Table classification {
+  id    integer [pk, increment]
+  name  text    [not null, unique]
+}
+
+Table artwork {
+  id                  integer [pk, increment]
+  met_object_id       integer [not null, unique]
+  title               text    [not null]
+  department_id       integer [not null]
+  artist_id           integer [not null]
+  classification_id   integer [not null]
+  object_date         text
+  medium              text
+  dimensions          text
+  credit_line         text
+  is_highlight        integer [not null, default: 0]
+  image_url           text
+  image_file          text
+  object_url          text
+}
+
+Ref: artwork.department_id > department.id            // N:1 (department 1 : N artwork)
+Ref: artwork.artist_id > artist.id                     // N:1 (artist 1 : N artwork)
+Ref: artwork.classification_id > classification.id     // N:1 (classification 1 : N artwork)

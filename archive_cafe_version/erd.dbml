@@ -1,0 +1,43 @@
+// ERD (선택 제출물)
+// https://dbdiagram.io 에 이 내용을 붙여넣으면 다이어그램 이미지로 렌더링됩니다.
+
+Table category {
+  id   integer [pk, increment]
+  name text    [not null, unique]
+}
+
+Table menu {
+  id            integer [pk, increment]
+  name          text    [not null, unique]
+  category_id   integer [not null]
+  price         integer [not null]
+  is_available  integer [not null, default: 1]
+}
+
+Table customer {
+  id         integer [pk, increment]
+  name       text    [not null]
+  email      text    [not null, unique]
+  phone      text
+  joined_at  date    [not null]
+}
+
+Table orders {
+  id            integer  [pk, increment]
+  customer_id   integer  [not null]
+  order_date    datetime [not null]
+  status        text     [not null, default: 'COMPLETED']
+}
+
+Table order_item {
+  id          integer [pk, increment]
+  order_id    integer [not null]
+  menu_id     integer [not null]
+  quantity    integer [not null]
+  unit_price  integer [not null]
+}
+
+Ref: menu.category_id > category.id      // N:1 (category 1 : N menu)
+Ref: orders.customer_id > customer.id    // N:1 (customer 1 : N orders)
+Ref: order_item.order_id > orders.id     // N:1 (orders 1 : N order_item)
+Ref: order_item.menu_id > menu.id        // N:1 (menu 1 : N order_item)
